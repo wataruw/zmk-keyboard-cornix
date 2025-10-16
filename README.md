@@ -177,7 +177,7 @@ Add to the `manifest/projects` section:
 projects:
   - name: zmk
     remote: zmkfirmware
-    revision: main
+    revision: v0.3.0  # Use stable version instead of 'main'
     import: app/west.yml
   - name: zmk-keyboard-cornix
     remote: cornix-shield
@@ -186,6 +186,8 @@ projects:
     remote: urob
     revision: main
 ```
+
+> **Note:** The ZMK project is pinned to `v0.3.0` (stable release) instead of `main` to avoid unexpected breaking changes. For more information, see [ZMK Version Pinning](https://zmk.dev/blog/2025/06/20/pinned-zmk).
 
 ### 2. Update Dependencies
 
@@ -303,7 +305,7 @@ remotes:
 projects:
   - name: zmk
     remote: zmkfirmware
-    revision: main
+    revision: v0.3.0  # Use stable version instead of 'main'
     import: app/west.yml
   - name: zmk-keyboard-cornix
     remote: cornix-shield
