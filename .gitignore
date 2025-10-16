@@ -8,3 +8,6 @@ result
 target
 
 firmware
+
+# West-managed modules
+modules/
