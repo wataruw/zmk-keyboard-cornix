@@ -29,7 +29,8 @@ include:
   - board: cornix_left
     #shield: cornix_indicator
     artifact-name: cornix_left_default
-    cmake-args: -DZMK_EXTRA_MODULES=modules/zmk-naginata
+    # ZMK_CONFIG は /tmp/zmk-config/config の絶対パスで渡されるので、そこからモジュールを参照
+    cmake-args: -DZEPHYR_EXTRA_MODULES=${ZMK_CONFIG}/../modules/zmk-naginata
 
   - board: cornix_ph_left
     #shield: cornix_indicator
@@ -38,7 +39,7 @@ include:
   - board: cornix_right
     #shield: cornix_indicator
     artifact-name: cornix_right
-    cmake-args: -DZMK_EXTRA_MODULES=modules/zmk-naginata
+    cmake-args: -DZEPHYR_EXTRA_MODULES=${ZMK_CONFIG}/../modules/zmk-naginata
 
   - board: cornix_right
     shield: settings_reset
