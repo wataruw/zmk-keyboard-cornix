@@ -9,16 +9,21 @@ This community firmwarw has been tested with Cornix using ZMK and provides full 
 
 ## warning：device breakdown recovery
 
-the original cornix use flash layout without softdevice
-so in the project. all board use nosd layout as default 
+<!-- English (EN) -->
+- EN: Older Cornix/RMK firmwares used a “no SoftDevice (no-SD)” flash layout. If your dongle/board doesn’t work after flashing, either:
+  1) Flash the SoftDevice restore UF2 (under bootloader directory; made for nice!nano v2 but generally works for NRF52840 boards), or
+  2) Build with snippet `nrf52840-nosd` so ZMK ignores SoftDevice.
+- EN TL;DR (v2.3+):
+  - Since v2.3, Cornix uses a no-SD layout by default. You can usually flash left/right UF2 directly.
+  - You only need reset.uf2 when migrating from pre-v2.3 or when the bootloader/partitions are corrupted.
 
-if you flash firmware into dongle and found it can't work with the original  firmware 
-you have two solutions 
-
-1. （recommend）flash the sd restore uf2 under boooader direcotry（its for nice nano 2 ，but i think it works for most of nrf52840 device）
-2. build your firmware  with snippet  'nrf
-52840-nosd', make zmk ignore soft device 
-
+<!-- 日本語 (JA) -->
+- JA: 旧Cornix/RMKファームは「SoftDeviceなし（no-SD）」のレイアウトでした。Flash後に動作しない場合は次のいずれかで復旧します。
+  1) bootloader配下のSoftDevice復旧用UF2をFlash（nice!nano v2向けですが多くのNRF52840で有効）、または
+  2) `nrf52840-nosd` スニペットでビルドしてZMKからSoftDeviceを無視する。
+- JA 要点（v2.3+）:
+  - v2.3以降は標準でno-SDレイアウトです。左右のUF2をそのままFlash可能です。
+  - reset.uf2が必要なのは「v2.3未満からの移行」や「ブートローダ/パーティション破損時」のみです.
 
 ## TODO LIST
 
@@ -54,9 +59,19 @@ Cornix is a Corne‑inspired split ergonomic keyboard featuring a compact 3×6 c
 
 ## --Bootloader Recovery Instructions--
 
--- The original RMK firmware removed the SoftDevice, so before flashing `zmk.uf2`, you need to restore the SoftDevice first. For specific steps, please refer to [bootloader/README.md](./bootloader/README.md). --
+<!-- English (EN) -->
+- EN: Original RMK removed the SoftDevice. Pre-v2.3 you needed to restore SoftDevice before flashing `zmk.uf2` (see bootloader/README.md).
+- EN: Since v2.3 the flash partitions were updated (SD reduced/removed), so you can flash your firmware directly.
+- EN: For v2.3+ you normally do NOT need reset.uf2 before flashing `cornix_left_default.uf2` and `cornix_right.uf2`. Use reset.uf2 only if:
+  - You’re upgrading from a pre-v2.3 layout that still depends on SD, or
+  - The bootloader/partitions are corrupted and UF2 doesn’t work as expected.
 
-Since v2.3 this board' flash partitions has updated, removed SD (reducing sd partitionsize size from 150K to 4K), so You can flash firmware directly.
+<!-- 日本語 (JA) -->
+- JA: 旧RMKではSoftDeviceを削除していたため、v2.3未満では `zmk.uf2` の前にSoftDevice復旧が必要でした（bootloader/README.md参照）。
+- JA: v2.3以降はフラッシュ構成を更新（SD縮小/撤廃）しており、UF2をそのまま書き込めます。
+- JA: v2.3以上では通常、`cornix_left_default.uf2` と `cornix_right.uf2` をそのままFlashして問題ありません。reset.uf2が必要なのは次の場合のみです。
+  - v2.3未満のレイアウトからの移行でSD依存が残っている
+  - ブートローダ/パーティションが壊れており、UF2が受け付けられない/動かない
 
 > You may need to reset fw by reset.uf2 from ealier version
 
