@@ -12,8 +12,6 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/ext_power.h>
 
-#include <behaviors/naginata.dtsi>
-
 // tap windows for ctl alt and gui
 
 #define HM_TAPPING_TERM 250
@@ -31,7 +29,6 @@
 #define NAVI   5
 #define NUM    6
 #define DEBUG  7
-#define NAGINATA 8
 
 // https://github.com/urob/zmk-config/tree/main#timeless-homerow-mods
 
@@ -137,20 +134,6 @@
         };
     };
 
-    macros {
-        ng_on: ng_on {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp LANGUAGE_1 &kp INTERNATIONAL_4 &to NAGINATA>;
-        };
-
-        ng_off: ng_off {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp LANGUAGE_2 &kp INTERNATIONAL_5 &to BASE>;
-        };
-    };
-
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
@@ -189,20 +172,6 @@
         layer4 {
             bindings = <&kp N4>;
             key-positions = <5 6>;
-        };
-
-        combo_ng_on {
-            timeout-ms = <300>;
-            key-positions = <18 19>;
-            bindings = <&ng_on>;
-            layers = <BASE>;
-        };
-
-        combo_ng_off {
-            timeout-ms = <300>;
-            key-positions = <16 17>;
-            bindings = <&ng_off>;
-            layers = <BASE NAGINATA>;
         };
     };
 
@@ -334,16 +303,6 @@
 &none       &none         &none         &none         &none         &none                         &none        &none  &none   &none  &none  &none
 &none       &none         &none         &none         &none         &bootloader   &trans  &trans  &bootloader  &none  &none   &none  &none  &none
 &none       &none         &none         &none         &none         &none                         &none        &none  &kp N7  &none  &none  &none
-            >;
-        };
-
-        naginata_layer {
-            display-name = "Naginata";
-            bindings = <
-&none    &ng Q    &ng W    &ng E    &ng R    &ng T    &ng Y    &ng U    &ng I      &ng O      &ng P      &none
-&none    &ng A    &ng S    &ng D    &ng F    &ng G    &ng H    &ng J    &ng K      &ng L      &ng SEMI   &none
-&none    &ng Z    &ng X    &ng C    &ng V    &ng B    &none    &none    &ng N      &ng M      &ng COMMA  &ng DOT  &ng SLASH  &none
-&none    &none    &none    &kp LSHFT  &mo 2  &ng SPACE  &ng ENTER  &mo 3  &kp RCTRL  &none  &none  &none
             >;
         };
     };
