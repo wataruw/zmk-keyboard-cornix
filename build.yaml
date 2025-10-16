@@ -29,6 +29,7 @@ include:
   - board: cornix_left
     #shield: cornix_indicator
     artifact-name: cornix_left_default
+    cmake-args: -DZMK_EXTRA_MODULES=modules/zmk-naginata
 
   - board: cornix_ph_left
     #shield: cornix_indicator
@@ -37,6 +38,7 @@ include:
   - board: cornix_right
     #shield: cornix_indicator
     artifact-name: cornix_right
+    cmake-args: -DZMK_EXTRA_MODULES=modules/zmk-naginata
 
   - board: cornix_right
     shield: settings_reset
