@@ -3,12 +3,13 @@
 ZMK Firmwareで薙刀式かな入力を実現します。
 薙刀式は大岡俊彦氏が考案されたかな入力方式です。
 
-http://oookaworks.seesaa.net/article/456099128.html
+<http://oookaworks.seesaa.net/article/456099128.html>
 
 ## Github Actionsでbuildする場合
 
 [zmk-config](https://zmk.dev/docs/customization)のwest.ymlに2か所を追加
-```
+
+```yml
 manifest:
   remotes:
     - name: zmkfirmware
@@ -28,7 +29,8 @@ manifest:
 ```
 
 config/boards/your_keyboard/your_keyboard.keymapに薙刀式のコンボとレイヤーを追加
-```
+
+```dtsi
 #include <behaviors/naginata.dtsi>
 
 / {
@@ -97,7 +99,7 @@ config/boards/your_keyboard/your_keyboard.keymapに薙刀式のコンボとレ�
 
 ## ローカルでbuildする場合の例
 
-```
+```bash
 git clone https://github.com/eswai/zmk-naginata.git
 cd zmk/app
 
