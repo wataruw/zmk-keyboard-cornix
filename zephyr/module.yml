@@ -1,6 +1,6 @@
+---
 name: zmk-keyboard-cornix
 build:
-  cmake: modules/zmk-naginata
-  kconfig: modules/zmk-naginata/Kconfig
   settings:
-    dts_root: modules/zmk-naginata/dts
+    board_root: .
+    snippet_root: .

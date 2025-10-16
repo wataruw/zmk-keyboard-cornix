@@ -3,12 +3,17 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: wataruw
+      url-base: https://github.com/wataruw
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.3.0
+      revision: main
       import:
         path-prefix: modules
         file: app/west.yml
+    - name: zmk-naginata
+      remote: wataruw
+      revision: main
   self:
     path: config
