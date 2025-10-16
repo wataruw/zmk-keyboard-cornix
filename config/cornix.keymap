@@ -11,6 +11,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/ext_power.h>
+#include <behaviors/naginata.dtsi>
 
 // tap windows for ctl alt and gui
 
@@ -40,6 +41,23 @@
 
 / {
     // Activate ADJUST layer by pressing raise and lower
+
+    macros {
+        ng_on: ng_on {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LANGUAGE_1 &kp INTERNATIONAL_4 &to 8>
+                ;
+        };
+        ng_off: ng_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LANGUAGE_2 &kp INTERNATIONAL_5 &to 0>
+                ;
+        };
+    };
 
     behaviors {
         hm_l: homerow_mods_left {
@@ -145,6 +163,19 @@
 
     combos {
         compatible = "zmk,combos";
+
+        combo_ng_on {
+            timeout-ms = <300>;
+            key-positions = <18 19>; // H, J
+            bindings = <&ng_on>;
+            layers = <0>;
+        };
+        combo_ng_off {
+            timeout-ms = <300>;
+            key-positions = <16 17>; // F, G
+            bindings = <&ng_off>;
+            layers = <0 8>;
+        };
 
         cb_ltm {
             bindings = <&kp ESC>;
@@ -304,6 +335,21 @@
 &none       &none         &none         &none         &none         &bootloader   &trans  &trans  &bootloader  &none  &none   &none  &none  &none
 &none       &none         &none         &none         &none         &none                         &none        &none  &kp N7  &none  &none  &none
             >;
+        };
+
+        naginata_layer {
+            display-name = "Naginata";
+
+            // Naginata input layer - 31 keys using &ng behavior
+            // Same layout as default layer but with &ng bindings
+
+            bindings = <
+&ng TAB  &ng Q          &ng W         &ng E         &ng R                &ng T                      &ng Y      &ng U                &ng I            &ng O         &ng P             &ng BSLH
+&ng ESC  &ng A          &ng S         &ng D         &ng F                &ng G                      &ng H      &ng J                &ng K            &ng L         &ng SEMI          &ng SQT
+&mo 4    &ng Z          &ng X         &ng C         &ng V                &ng B        &none  &none  &ng N      &ng M                &ng COMMA        &ng DOT       &ng FSLH          &ng BACKSPACE
+&none    &none          &none         &lt 6 ESCAPE  &mo 2                &ng SPACE                  &ng ENTER  &mo 3                &lt 2 BACKSPACE  &none         &none             &none
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
     };
 };
