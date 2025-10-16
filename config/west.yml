@@ -8,6 +8,8 @@ manifest:
       url-base: https://github.com/urob
     - name: janpfischer
       url-base: https://github.com/janpfischer
+    - name: wataruw
+      url-base: https://github.com/wataruw
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -15,6 +17,10 @@ manifest:
       clone-depth: 1
       import:
         file: app/west.yml
+    - name: zmk-naginata
+      remote: wataruw
+      revision: main
+      clone-depth: 1
     - name: zmk-helpers
       remote: urob
       revision: main
