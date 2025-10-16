@@ -1,6 +1,9 @@
 name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 
+env:
+  ZEPHYR_EXTRA_MODULES: ${{ github.workspace }}/modules/zmk-naginata
+
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
