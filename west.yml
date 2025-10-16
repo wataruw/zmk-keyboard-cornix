@@ -1,0 +1,14 @@
+manifest:
+  version: "0.14"
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: main
+      import:
+        path-prefix: modules
+        file: app/west.yml
+  self:
+    path: config
