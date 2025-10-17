@@ -178,10 +178,10 @@
             // | MO(1) |  MO(2) | GUI |      | ALT  |  F2  |  SPACE |  | ENTER |  BSPC |  DEL  |       |  ←   |   ↓   |  →   |
 
             bindings = <
-&kp TAB    &kp Q   &kp W     &kp E  &kp R     &kp T                          &kp Y      &kp U    &kp I      &kp O    &kp P      &kp ESC
-&kp LCTRL  &kp A   &kp S     &kp D  &kp F     &kp G                          &kp H      &kp J    &kp K      &kp L    &kp MINUS  &kp AT
-&kp LSHFT  &kp Z   &kp X     &kp C  &kp V     &kp B   &kp C_MUTE  &none      &kp N      &kp M    &kp COMMA  &kp DOT  &kp UP     &kp FSLH
-&mo 1      &mo 2   &kp LGUI         &kp LALT  &kp F2  &kp SPACE   &kp ENTER  &kp BSPC   &kp DEL             &kp UP   &kp DOWN   &kp RIGHT
+&kp TAB    &kp Q   &kp W     &kp E  &kp R     &kp T                          &kp Y      &kp U    &kp I      &kp O     &kp P      &kp ESC
+&kp LCTRL  &kp A   &kp S     &kp D  &kp F     &kp G                          &kp H      &kp J    &kp K      &kp L     &kp MINUS  &kp AT
+&kp LSHFT  &kp Z   &kp X     &kp C  &kp V     &kp B   &kp C_MUTE  &none      &kp N      &kp M    &kp COMMA  &kp DOT   &kp UP     &kp FSLH
+&mo 1      &mo 2   &kp LGUI         &kp LALT  &kp F2  &kp SPACE   &kp ENTER  &kp BSPC   &kp DEL             &kp LEFT  &kp DOWN   &kp RIGHT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -228,11 +228,11 @@
             // Naginata input layer - 31 keys using &ng behavior
             // Same layout as default layer but with &ng bindings
 
-            bindings = <
-&ng TAB  &ng Q          &ng W         &ng E         &ng R                &ng T                      &ng Y      &ng U                &ng I            &ng O         &ng P             &ng BSLH
-&ng ESC  &ng A          &ng S         &ng D         &ng F                &ng G                      &ng H      &ng J                &ng K            &ng L         &ng SEMI          &ng SQT
-&mo 4    &ng Z          &ng X         &ng C         &ng V                &ng B        &none  &none  &ng N      &ng M                &ng COMMA        &ng DOT       &ng FSLH          &ng BACKSPACE
-&none    &none          &none         &lt 6 ESCAPE  &mo 2                &ng SPACE                  &ng ENTER  &mo 3                &lt 2 BACKSPACE  &none         &none             &none
+            bindings = 
+&kp TAB    &ng Q  &ng W     &ng E  &ng R     &ng T                          &ng Y     &ng U    &ng I      &ng O     &ng P     &kp ESC
+&kp LCTRL  &ng A  &ng S     &ng D  &ng F     &ng G                          &ng H     &ng J    &ng K      &ng L     &ng SEMI  &kp AT
+&kp LSHFT  &ng Z  &ng X     &ng C  &ng V     &ng B   &kp C_MUTE  &none      &ng N     &ng M    &ng COMMA  &ng DOT   &kp UP    &ng FSLH
+&mo 1      &mo 2  &kp LGUI         &kp LALT  &kp F2  &ng SPACE   &ng ENTER  &kp BSPC  &kp DEL             &kp LEFT  &kp DOWN  &kp RIGHT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
