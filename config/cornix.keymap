@@ -220,6 +220,7 @@
 &kp LSHFT  &none        &bt BT_CLR_ALL  &bt BT_SEL 2  &none     &none  &kp C_MUTE  &none     &kp F1  &kp F2  &kp F3  &kp F12         &mmv MOVE_UP    &kp BSLH
 &mo 1      &mo 2        &kp LGUI                      &kp LALT  &none  &mkp MB1    &mkp MB2  &none   &none           &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         naginata_layer {
@@ -228,7 +229,7 @@
             // Naginata input layer - 31 keys using &ng behavior
             // Same layout as default layer but with &ng bindings
 
-            bindings = 
+            bindings = <
 &kp TAB    &ng Q  &ng W     &ng E  &ng R     &ng T                          &ng Y     &ng U    &ng I      &ng O     &ng P     &kp ESC
 &kp LCTRL  &ng A  &ng S     &ng D  &ng F     &ng G                          &ng H     &ng J    &ng K      &ng L     &ng SEMI  &kp AT
 &kp LSHFT  &ng Z  &ng X     &ng C  &ng V     &ng B   &kp C_MUTE  &none      &ng N     &ng M    &ng COMMA  &ng DOT   &kp UP    &ng FSLH
