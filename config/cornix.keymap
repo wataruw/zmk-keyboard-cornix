@@ -209,14 +209,14 @@
             display-name = "Raise";
 
             // -----------------------------------------------------------------  -------------------------------------------------------------------
-            // |       |        |  Clear BT    |  BT0 |      |      |                       |  F7   |  F8   |  F9   |  F12     |         |  NUBS     |
-            // | CTRL  |        |              |  BT1 |      |      |                       |  F4   |  F5   |  F6   |  F11     |         |  INT_YEN  |
+            // |       |        |  Clear BT    |  BT0 |      |      |                       |  F7   |  F8   |  F9   |  F10     |   F15   |  NUBS     |
+            // | CTRL  |        |              |  BT1 |      |      |                       |  F4   |  F5   |  F6   |  F11     |   F16   |  INT_YEN  |
             // | SHIFT |        |  Clear Peer  |  BT2 |      |      |  MUTE    |  |         |  F1   |  F2   |  F3   |  F12     |   MS_UP |  BSLH     |
             // | MO(1) |  MO(2) | GUI          |      | ALT  |      |  Mouse 1 |  | Mouse 2 |       |       |       |  MS_LEFT |   MS_DN |  MS_RIGHT |
 
             bindings = <
-&none      &none        &bt BT_CLR      &bt BT_SEL 0  &none     &none                        &kp F7  &kp F8  &kp F9  &kp F12         &none           &kp NUBS
-&kp LCTRL  &none        &none           &bt BT_SEL 1  &none     &none                        &kp F4  &kp F5  &kp F6  &kp F11         &none           &kp INT_YEN
+&none      &none        &bt BT_CLR      &bt BT_SEL 0  &none     &none                        &kp F7  &kp F8  &kp F9  &kp F10         &kp F15         &kp NUBS
+&kp LCTRL  &none        &none           &bt BT_SEL 1  &none     &none                        &kp F4  &kp F5  &kp F6  &kp F11         &kp F16         &kp INT_YEN
 &kp LSHFT  &none        &bt BT_CLR_ALL  &bt BT_SEL 2  &none     &none  &kp C_MUTE  &none     &kp F1  &kp F2  &kp F3  &kp F12         &mmv MOVE_UP    &kp BSLH
 &mo 1      &mo 2        &kp LGUI                      &kp LALT  &none  &mkp MB1    &mkp MB2  &none   &none           &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT
             >;
