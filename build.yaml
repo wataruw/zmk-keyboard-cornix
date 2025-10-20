@@ -16,6 +16,9 @@ include:
   - board: cornix_left
     #shield: cornix_indicator
     artifact-name: cornix_left_default
+    snippet: studio-rpc-usb-uart
+    cmake-args:
+      - -DCONFIG_ZMK_STUDIO=y
 
   - board: cornix_right
     #shield: cornix_indicator

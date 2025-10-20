@@ -101,6 +101,27 @@ If you’re new to ZMK and don’t want to deal with `west.yml` or module manage
    - Put your board into UF2 bootloader mode (usually by double-tapping the reset button).
    - Drag and drop the `.uf2` file onto the mounted drive.
 
+## 🧩 ZMK Studio Support
+
+This repository is configured for ZMK Studio on the left/central side.
+
+- Builds include the `studio-rpc-usb-uart` snippet and `CONFIG_ZMK_STUDIO=y` for the left side only.
+- We’ve added reserved layers (`extra1`, `extra2`) for use within ZMK Studio.
+- An unlock binding `&studio_unlock` is available on the Raise layer, top‑left position (replacing a former `&none`).
+
+How to use:
+
+1. Build and flash the left firmware produced by GitHub Actions.
+2. Connect over USB and open ZMK Studio (web or native app).
+3. Ensure keyboard output is USB (invoke `&out OUT_USB` if needed).
+4. Press the `&studio_unlock` key once to allow editing.
+5. Make your keymap changes in Studio. Note: Once Studio takes over, changes to `.keymap` aren’t applied unless you run “Restore Stock Settings” in Studio.
+
+Notes:
+
+- Studio builds use more RAM/flash. If you hit size limits, we can tune features.
+- Only the left (central) side needs Studio enabled for split keyboards.
+
 ### Who Is This For?
 
 - Beginners to ZMK

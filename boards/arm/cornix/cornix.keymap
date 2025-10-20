@@ -13,6 +13,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
+            display-name = "Base";
             // -----------------------------------------------------------------------------------------
             // |  TAB |  Q  |  W  |  E  |  R  |  T  |      |   |      |  Y  |  U  |  I  |  O  |  P  | BKSP |
             // | CTRL |  A  |  S  |  D  |  F  |  G  |      |   |      |  H  |  J  |  K  |  L  |  ;  |  '   |
@@ -32,6 +33,7 @@
         };
 
         lower_layer {
+            display-name = "Lower";
             // -----------------------------------------------------------------------------------------
             // |  TAB |  1  |  2  |  3  |  4  |  5  |      |   |      |  6  |  7  |  8  |  9  |  0  | BKSP |
             // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |      |   |      | LFT | DWN |  UP | RGT |     |      |
@@ -41,12 +43,13 @@
             bindings = <
 &kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5                        &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans    &trans    &trans    &trans     &none   &none
+&kp LSHFT   &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans    &trans    &trans    &trans     &none   &studio_unlock
 &trans      &trans        &trans        &trans        &trans        &kp SPACE                     &kp RET   &trans    &kp RALT  &trans     &trans  &trans
             >;
         };
 
         raise_layer {
+            display-name = "Raise";
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  |      |   |      |  ^  |  &  |  *  |  (  |  )  | BKSP |
             // | CTRL |     |     |     |     |     |      |   |      |  -  |  =  |  [  |  ]  |  \  |  `   |
@@ -59,6 +62,14 @@
 &kp LSHFT  &trans    &trans  &trans    &trans    &trans     &none  &none  &kp UNDER  &kp PLUS   &kp LBRC      &kp RBRC  &kp PIPE  &kp TILDE
 &trans     &trans    &trans  &trans    &trans    &kp SPACE                &kp RET    &trans     &kp RALT      &trans    &trans    &trans
             >;
+        };
+
+        // Extra layers reserved for use in ZMK Studio
+        extra1 {
+            status = "reserved";
+        };
+        extra2 {
+            status = "reserved";
         };
     };
 };
