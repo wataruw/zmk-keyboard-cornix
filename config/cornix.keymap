@@ -216,8 +216,8 @@
             // | MO(1) |  MO(2) | GUI          |      | ALT  |      |  Mouse 1 |  | Mouse 2 |       |       |       |  MS_LEFT |   MS_DN |  MS_RIGHT  |
 
             bindings = <
-&studio_unlock  &none        &bt BT_CLR      &bt BT_SEL 0  &bt BT_SEL 3  &none                        &kp F7  &kp F8  &kp F9  &kp F10         &kp F15         &kp JP_PIPE
-&kp LCTRL       &none        &none           &bt BT_SEL 1  &bt BT_SEL 4  &none                        &kp F4  &kp F5  &kp F6  &kp F11         &kp F16         &kp JP_YEN
+&studio_unlock  &none        &bt BT_CLR      &bt BT_SEL 0  &bt BT_SEL 3  &none                        &kp F7  &kp F8  &kp F9  &kp F10         &ng F15         &kp JP_PIPE
+&kp LCTRL       &none        &none           &bt BT_SEL 1  &bt BT_SEL 4  &none                        &kp F4  &kp F5  &kp F6  &kp F11         &ng F16         &kp JP_YEN
 &kp LSHFT       &none        &bt BT_CLR_ALL  &bt BT_SEL 2  &none         &none  &kp C_MUTE  &none     &kp F1  &kp F2  &kp F3  &kp F12         &mmv MOVE_UP    &kp JP_BSLH
 &mo 1           &mo 2        &kp LGUI                      &kp LALT      &none  &mkp MB1    &mkp MB2  &none   &none           &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT
             >;
