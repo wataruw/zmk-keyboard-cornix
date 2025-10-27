@@ -209,17 +209,17 @@
         Raise_layer {
             display-name = "Raise";
 
-            // -----------------------------------------------------------------  --------------------------------------------------------------------
-            // |       |        |  Clear BT    |  BT0 |      |      |                       |  F7   |  F8   |  F9   |  F10     |   F15   |  |         |
-            // | CTRL  |        |              |  BT1 |      |      |                       |  F4   |  F5   |  F6   |  F11     |   F16   |  ¥         |
-            // | SHIFT |        |  Clear Peer  |  BT2 |      |      |  MUTE    |  |         |  F1   |  F2   |  F3   |  F12     |   MS_UP |  BackSlash |
-            // | MO(1) |  MO(2) | GUI          |      | ALT  |      |  Mouse 1 |  | Mouse 2 |       |       |       |  MS_LEFT |   MS_DN |  MS_RIGHT  |
+            // -------------------------------------------------------------------------  --------------------------------------------------------------------
+            // | Unlock  |  BT0      |  BT1         |  BT2  |  BT3  |  BT4  |                       |  F7   |  F8   |  F9   |  F10     |         |  |         |
+            // | CTRL    |  F15      |  F16         |       |       |       |                       |  F4   |  F5   |  F6   |  F11     |         |  ¥         |
+            // | SHIFT   |  Clear BT |  Clear Peer  |       |       |       |  MUTE    |  |         |  F1   |  F2   |  F3   |  F12     |   MS_UP |  BackSlash |
+            // | MO(1)   |  MO(2)    |  GUI         |       |  ALT  |       |  Mouse 1 |  | Mouse 2 |       |       |       |  MS_LEFT |   MS_DN |  MS_RIGHT  |
 
             bindings = <
-&studio_unlock  &none        &bt BT_CLR      &bt BT_SEL 0  &bt BT_SEL 3  &none                        &kp F7  &kp F8  &kp F9  &kp F10         &ng F15         &kp JP_PIPE
-&ng LCTRL       &none        &none           &bt BT_SEL 1  &bt BT_SEL 4  &none                        &kp F4  &kp F5  &kp F6  &kp F11         &ng F16         &kp JP_YEN
-&kp LSHFT       &none        &bt BT_CLR_ALL  &bt BT_SEL 2  &none         &none  &kp C_MUTE  &none     &kp F1  &kp F2  &kp F3  &kp F12         &mmv MOVE_UP    &kp JP_BSLH
-&mo 1           &mo 2        &ng LGUI                      &kp LALT      &none  &mkp MB1    &mkp MB2  &none   &none           &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT
+&studio_unlock  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                        &kp F7  &kp F8  &kp F9  &kp F10         &none           &kp JP_PIPE
+&ng LCTRL       &ng F15       &ng F16         &none         &none         &none                               &kp F4  &kp F5  &kp F6  &kp F11         &none           &kp JP_YEN
+&kp LSHFT       &bt BT_CLR    &bt BT_CLR_ALL  &none         &none         &none         &kp C_MUTE  &none     &kp F1  &kp F2  &kp F3  &kp F12         &mmv MOVE_UP    &kp JP_BSLH
+&mo 1           &mo 2         &ng LGUI                      &kp LALT      &none         &mkp MB1    &mkp MB2  &none   &none           &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -236,7 +236,7 @@
 &kp TAB    &ng Q  &ng W     &ng E  &ng R     &ng T                             &ng Y     &ng U    &ng I      &ng O     &ng P     &kp ESC
 &ng LCTRL  &ng A  &ng S     &ng D  &ng F     &ng G                             &ng H     &ng J    &ng K      &ng L     &ng MINUS &kp JP_AT
 &kp LSHFT  &ng Z  &ng X     &ng C  &ng V     &ng B      &kp C_MUTE  &none      &ng N     &ng M    &ng COMMA  &ng DOT   &trans    &ng FSLH
-&mo 1      &mo 2  &ng LGUI         &kp LALT  &kp KP_N0  &ng SPACE   &ng ENTER  &kp BSPC  &kp DEL             &trans    &trans    &trans
+&mo 1      &mo 2  &ng LGUI         &kp LALT  &mo 0      &ng SPACE   &ng ENTER  &kp BSPC  &kp DEL             &trans    &trans    &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
