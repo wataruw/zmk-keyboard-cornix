@@ -197,10 +197,10 @@
             // | MO(1) |  MO(2) | GUI |      | ALT  |  0   |  SPACE |  | ENTER |  BSPC |  DEL  |       |  HOME*|   PG_DN |  END*|
 
             bindings = <
-&kp EQUAL  &kp KP_SLASH  &kp KP_ASTERISK  &kp KP_N7  &kp KP_N8  &kp KP_N9                         &kp JP_SQT   &kp JP_LPAR   &kp JP_RPAR   &kp JP_LBKT   &kp JP_RBKT   &kp JP_CARET
-&ng LCTRL  &kp COMMA     &kp KP_DOT       &kp KP_N4  &kp KP_N5  &kp KP_N6                         &kp JP_DLLR  &kp JP_PRCNT  &kp JP_AMPS   &kp JP_COLON  &kp JP_TILDE  &kp JP_GRAVE
-&kp LSHFT  &kp KP_PLUS   &kp KP_MINUS     &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp C_MUTE  &none      &kp JP_EXCL  &kp JP_DQT    &kp JP_HASH   &kp JP_SEMI   &kp PG_UP     &kp JP_UNDER
-&mo 1      &mo 2         &ng LGUI                 &kp LALT   &kp KP_N0  &kp SPACE   &kp ENTER  &kp BSPC     &kp DEL                     &ng HOME      &kp PG_DN     &ng END
+&kp JP_EQUAL  &kp KP_SLASH  &kp KP_ASTERISK  &kp KP_N7  &kp KP_N8  &kp KP_N9                         &kp JP_SQT   &kp JP_LPAR   &kp JP_RPAR   &kp JP_LBKT   &kp JP_RBKT   &kp JP_CARET
+&ng LCTRL     &kp COMMA     &kp KP_DOT       &kp KP_N4  &kp KP_N5  &kp KP_N6                         &kp JP_DLLR  &kp JP_PRCNT  &kp JP_AMPS   &kp JP_COLON  &kp JP_TILDE  &kp JP_GRAVE
+&kp LSHFT     &kp KP_PLUS   &kp KP_MINUS     &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp C_MUTE  &none      &kp JP_EXCL  &kp JP_DQT    &kp JP_HASH   &kp JP_SEMI   &kp PG_UP     &kp JP_UNDER
+&mo 1         &mo 2         &ng LGUI                 &kp LALT   &kp KP_N0  &kp SPACE   &kp ENTER  &kp BSPC     &kp DEL                     &ng HOME      &kp PG_DN     &ng END
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
