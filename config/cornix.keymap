@@ -60,10 +60,10 @@
         td_shift_caps: tap_dance {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_SHIFT_CAPS";
-            // ダブルタップ判定時間。好みに応じて 180〜250 に調整
+            // Double-tap detection time. Adjust between 180 and 250 ms to your preference.
             tapping-term-ms = <200>;
-            // 1タップ(ホールド含む) = Shift, 2タップ = CapsLock
-            bindings = <&kp LSHFT>, <&kp CPSLK>;
+            // 1 tap (including hold) = Shift, 2 taps = CapsLock
+            bindings = <&kp LSHFT>, <&kp CAPSLOCK>;
         };
         hm_l: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
