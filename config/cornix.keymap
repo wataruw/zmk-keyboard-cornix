@@ -175,6 +175,14 @@
         };
     };
 
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        lower_raise_to_base {
+            if-layers = <LOWER RAISE>;
+            then-layer = <BASE>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
