@@ -59,7 +59,8 @@
     behaviors {
         td_shift_caps: tap_dance {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_SHIFT_CAPS";
+            // '#binding-cells' is required by zmk,behavior-tap-dance binding.
+            #binding-cells = <0>;
             // Double-tap detection time. Adjust between 180 and 250 ms to your preference.
             tapping-term-ms = <200>;
             // 1 tap (including hold) = Shift, 2 taps = CapsLock
