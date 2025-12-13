@@ -29,13 +29,13 @@ manifest:
       remote: hitsmaxft
       revision: main
       clone-depth: 1
-    - name: zmk-dongle-display
-      remote: hitsmaxft
-      revision: main
-      clone-depth: 1
-    - name: zmk-dongle-screen
-      remote: janpfischer
-      revision: main
-      clone-depth: 1
+    # - name: zmk-dongle-display
+    #   remote: hitsmaxft
+    #   revision: main
+    #   clone-depth: 1
+    # - name: zmk-dongle-screen
+    #   remote: janpfischer
+    #   revision: main
+    #   clone-depth: 1
   self:
     path: config
