@@ -219,13 +219,13 @@
 
             // -------------------------------------------------------------------------  --------------------------------------------------------------------
             // | Unlock  |  BT0      |  BT1         |  BT2  |  BT3   |  BT4   |                       |  F7   |  F8   |  F9   |  F10     |         |  |         |
-            // | CTRL    |  F15      |  F16         |       |  LANG2 |  LANG1 |                       |  F4   |  F5   |  F6   |  F11     |         |  ¥         |
+            // | CTRL    |  F15      |  F16         |  F20  |  LANG2 |  LANG1 |                       |  F4   |  F5   |  F6   |  F11     |         |  ¥         |
             // | SHIFT   |  Clear BT |  Clear Peer  |       |        |        |  MUTE    |  |         |  F1   |  F2   |  F3   |  F12     |   MS_UP |  BackSlash |
             // | MO(1)   |  MO(2)    |  GUI         |       |  ALT   |        |  Mouse 1 |  | Mouse 2 |       |       |       |  MS_LEFT |   MS_DN |  MS_RIGHT  |
 
             bindings = <
 &studio_unlock  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                        &kp F7  &kp F8  &kp F9  &kp F10         &none           &kp JP_PIPE
-&ng LCTRL       &ng F15       &ng F16         &none         &kp LANG2     &kp LANG1                           &kp F4  &kp F5  &kp F6  &kp F11         &none           &kp JP_YEN
+&ng LCTRL       &ng F15       &ng F16         &ng F20       &kp LANG2     &kp LANG1                           &kp F4  &kp F5  &kp F6  &kp F11         &none           &kp JP_YEN
 &td_shift_caps  &bt BT_CLR    &bt BT_CLR_ALL  &none         &none         &none         &kp C_MUTE  &none     &kp F1  &kp F2  &kp F3  &kp F12         &mmv MOVE_UP    &kp JP_BSLH
 &mo 1           &mo 2         &ng LGUI                      &kp LALT      &none         &mkp MB1    &mkp MB2  &none   &none           &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT
             >;
