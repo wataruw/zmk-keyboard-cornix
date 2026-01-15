@@ -1,163 +1,137 @@
-# ZMK Keyboard for  Cornix
+# Cornix用ZMKキーボード
 
-This community firmwarw has been tested with Cornix using ZMK and provides full split-role configuration, battery power management, and Bluetooth central/peripheral setup per ZMK split guidelines
+CornixはRMKですが、ソースコード非公開です。このフォークしたコミュニティファームウェアは、CornixをZMKで動作するようにしています。
+> ZMKの分割ガイドラインに従った完全な左右役割設定、バッテリー電源管理、およびBluetoothセントラル/ペリフェラル設定を提供します。
 
-![image](images/cornix_with_dongle.png)
-![image](images/cornix_layout.png)
+また、eswaiさん作成のZMK版薙刀式をフォークし、改造した、[wataruw/zmk-naginata](https://github.com/wataruw/zmk-naginata)をリンクすることで、Cornixで薙刀式かな入力を実現します。
 
-## warning：device breakdown recovery
+> 薙刀式は大岡俊彦さんが考案なされた、かな入力方式です。  
+> [カナ配列【薙刀式】(カタナ式ファミリー)](http://oookaworks.seesaa.net/article/456099128.html#gsc.tab=0)
 
-<!-- English (EN) -->
-- EN: Older Cornix/RMK firmwares used a “no SoftDevice (no-SD)” flash layout. If your dongle/board doesn’t work after flashing, either:
-  1) Flash the SoftDevice restore UF2 (under bootloader directory; made for nice!nano v2 but generally works for NRF52840 boards), or
-  2) Build with snippet `nrf52840-nosd` so ZMK ignores SoftDevice.
-- EN TL;DR (v2.3+):
-  - Since v2.3, Cornix uses a no-SD layout by default. You can usually flash left/right UF2 directly.
-  - You only need reset.uf2 when migrating from pre-v2.3 or when the bootloader/partitions are corrupted.
+## RGBについて（フォーク元のままの日本語訳）
 
-<!-- 日本語 (JA) -->
-- JA: 旧Cornix/RMKファームは「SoftDeviceなし（no-SD）」のレイアウトでした。Flash後に動作しない場合は次のいずれかで復旧します。
-  1) bootloader配下のSoftDevice復旧用UF2をFlash（nice!nano v2向けですが多くのNRF52840で有効）、または
-  2) `nrf52840-nosd` スニペットでビルドしてZMKからSoftDeviceを無視する。
-- JA 要点（v2.3+）:
-  - v2.3以降は標準でno-SDレイアウトです。左右のUF2をそのままFlash可能です。
-  - reset.uf2が必要なのは「v2.3未満からの移行」や「ブートローダ/パーティション破損時」のみです.
+Cornixシールドには片側に2つのRGB LEDがあり、標準ファームウェアではPWMで制御されています。
 
-## TODO LIST
+これに代わる解決策として、RGBインジケーターモジュールを適応させてこれらのRGBを点灯させ、標準ファームウェアと同様の効果（バッテリー残量や接続状態を示すためにRGB LEDを使用する）を実現することです。
 
-- [x] 52 keys full layout keymap, since v2.0
-- [x] ec11 encoder, since v2.2
-- [x] no-SD image, since v2.3
-- [x] rgb since v3
-- support various of dongles
+しかし、このリポジトリではまだサポートされていません。PR歓迎です！
 
-### about RGB
+※フォーク元で対応したら、取り込めるかもしれません。
 
-Cornix shield has 2 RGB LEDs on each side, controled by PWM in the stock firmware.
-
-The replacement solution is adapting the RGB indicator module to light up these RGBs, to achieve the same effect as the stock firmware, which uses the RGB LEDs to indicate battery status and connection status.
-
-But it is not supported yet in this repository.  PR is welcome!
-
-## Supported Hardware: Cornix Split Keyboard
+## 対応ハードウェア：Cornix分割キーボード（フォーク元のままの日本語訳）
 
 Cornix Split Tented Low‑Profile Ergo Keyboard (Jezail Funder)
 
-Cornix is a Corne‑inspired split ergonomic keyboard featuring a compact 3×6 column‑staggered layout with six thumb‑cluster keys (three per half). It offers adjustable tenting angles at 10°, 18°, and 25°, allowing users to reduce wrist strain and find a custom ergonomic alignment
+Cornixは、Corneにインスパイアされた分割エルゴノミクスキーボードで、コンパクトな3x6カラムスタッガード配列と6つのサムクラスターキー（片側3つ）を備えています。10°、18°、25°の調整可能なテンティング角度を提供し、ユーザーの手首の負担を軽減し、独自のエルゴノミクス配置を見つけることができます。
 
-- **Split, column‑staggered layout** (3×6 + thumb cluster layout).
-- **Adjustable tenting support** at 10°, 18°, 25° (hardware‑based, no firmware hacks).
-- **Kailh Choc V2 hot‑swap sockets** and support for LAK or LCK low‑profile keycaps.
-- **Dual‑mode connectivity**: Wired USB‑C or Bluetooth wireless (left half as master).
-- **Firmware**: Fully VIAL‑supported for keymaps and layer customization, stock firmware is RMK.
-- Premium **CNC‑machined aluminum chassis**, custom damping foam, and portable storage pouch.
+- **分割、カラムスタッガード配列** (3x6 + サムクラスターレイアウト)。
+- **調整可能なテンティングサポート** 10°、18°、25° (ハードウェアベース、ファームウェアハックなし)。
+- **Kailh Choc V2ホットスワップソケット** およびLAKまたはLCKロープロファイルキーキャップのサポート。
+- **デュアルモード接続**: 有線USB-CまたはBluetoothワイヤレス（左側がマスター）。
+- **ファームウェア**: キーマップとレイヤーのカスタマイズにVIALを完全サポート、標準ファームウェアはRMKです。
+- プレミアムな **CNC加工アルミニウムシャーシ**、カスタムダンピングフォーム、およびポータブル収納ポーチ。
 
-> this project owner is RMK contributor too, support RMK <https://rmk.rs/> please
+> このプロジェクトの所有者はRMKのコントリビューターでもあります。RMKのサポートもお願いします <https://rmk.rs/>
 
-## --Bootloader Recovery Instructions--
+## --ブートローダー復旧手順--
 
-<!-- English (EN) -->
-- EN: Original RMK removed the SoftDevice. Pre-v2.3 you needed to restore SoftDevice before flashing `zmk.uf2` (see bootloader/README.md).
-- EN: Since v2.3 the flash partitions were updated (SD reduced/removed), so you can flash your firmware directly.
-- EN: For v2.3+ you normally do NOT need reset.uf2 before flashing `cornix_left_default.uf2` and `cornix_right.uf2`. Use reset.uf2 only if:
-  - You’re upgrading from a pre-v2.3 layout that still depends on SD, or
-  - The bootloader/partitions are corrupted and UF2 doesn’t work as expected.
+オリジナルのRMKはSoftDeviceを削除していました。v2.3以前では、`zmk.uf2` をフラッシュする前にSoftDeviceを復元する必要があったようです（bootloader/README.mdを参照）
 
-<!-- 日本語 (JA) -->
-- JA: 旧RMKではSoftDeviceを削除していたため、v2.3未満では `zmk.uf2` の前にSoftDevice復旧が必要でした（bootloader/README.md参照）。
-- JA: v2.3以降はフラッシュ構成を更新（SD縮小/撤廃）しており、UF2をそのまま書き込めます。
-- JA: v2.3以上では通常、`cornix_left_default.uf2` と `cornix_right.uf2` をそのままFlashして問題ありません。reset.uf2が必要なのは次の場合のみです。
-  - v2.3未満のレイアウトからの移行でSD依存が残っている
-  - ブートローダ/パーティションが壊れており、UF2が受け付けられない/動かない
+v2.3以降は、フラッシュパーティションが更新（SDの縮小/削除）されたため、ファームウェアを直接フラッシュできます。
 
-> You may need to reset fw by reset.uf2 from ealier version
-> You can rollback to stock firmware by flash orgin uf2 file, backup files under rmkfw/
+v2.3以降では、通常、`cornix_left_default.uf2` と `cornix_right.uf2` をフラッシュする前にreset.uf2は**不要**です。reset.uf2を使用するのは以下の場合のみです：
 
-## 🔰 Easy Method: Clone This Repository and Build with GitHub Actions
+- SDに依存していたv2.3以前のレイアウトからアップグレードする場合
+- ブートローダー/パーティションが破損しており、UF2が期待通りに動作しない場合
 
-If you’re new to ZMK and don’t want to deal with `west.yml` or module management, you can simply use this repository directly to customize your firmware.
+> 以前のバージョンからのファームウェアリセットにはreset.uf2が必要になる場合があります。
+> 元のuf2ファイルをフラッシュすることで標準ファームウェアにロールバックできます（rmkファームウェア/配下のファイルをバックアップしてください）。
 
-### Steps
+## 🔰 簡単な方法：このリポジトリをクローンしてGitHub Actionsでビルドする
 
-1. **Fork or Clone This Repository**
-   - Click **Fork** in the top right to copy this repo to your GitHub account, or
-   - Run `git clone` locally.
+ZMKを初めて使用し、`west.yml` やモジュール管理を行いたくない場合は、このリポジトリを直接使用してファームウェアをカスタマイズできます。
 
-   > Forking is recommended, because GitHub Actions will automatically build your firmware.
+### 手順
 
-2. **Edit Your Keymap**
-   - Locate the keymap file in `config/cornix.keymap` (or whichever `.keymap` file you want to customize).
-   - You can edit it directly or use the [ZMK Keymap Editor](https://nickcoutsos.github.io/keymap-editor/):
-     - Open the editor and load your `.keymap` file.
-     - Make changes with the visual editor.
-     - Download the updated file and replace it in your repository.
-     - Commit and push the changes to GitHub.
+1. **このリポジトリをフォークまたはクローンする**
+   - 右上の **Fork** をクリックしてこのリポジトリをあなたのGitHubアカウントにコピーするか、
+   - ローカルで `git clone` を実行します。
 
-3. **Build with GitHub Actions**
-   - After pushing, GitHub Actions will automatically run the build.
-   - Once the workflow finishes, go to **Actions → your latest run → Artifacts** and download the firmware (`.uf2`) files.
+   > フォークをお勧めします。GitHub Actionsが自動的にファームウェアをビルドするからです。
 
-4. **Flash Your Keyboard**
-   - Put your board into UF2 bootloader mode (usually by double-tapping the reset button).
-   - Drag and drop the `.uf2` file onto the mounted drive.
+2. **キーマップを編集する**
+   - `config/cornix.keymap` にあるキーマップファイル（またはカスタマイズしたい `.keymap` ファイル）を見つけます。
+   - 直接編集するか、[ZMK Keymap Editor](https://nickcoutsos.github.io/keymap-editor/) を使用できます：
+     - エディタを開き、`.keymap` ファイルを読み込みます。
+     - ビジュアルエディタで変更を行います。
+     - 更新されたファイルをダウンロードし、リポジトリ内のものと置き換えます。
+     - 変更をコミットしてGitHubにプッシュします。
 
-## 🧩 ZMK Studio Support
+3. **GitHub Actionsでビルドする**
+   - プッシュ後、GitHub Actionsが自動的にビルドを実行します。
+   - ワークフローが完了したら、**Actions → 最新の実行 → Artifacts** に移動し、ファームウェア（`.uf2`）ファイルをダウンロードします。
 
-This repository is configured for ZMK Studio on the left/central side.
+4. **キーボードをフラッシュする**
+   - ボードをUF2ブートローダーモードにします（通常はリセットボタンをダブルタップします）。
+   - マウントされたドライブに `.uf2` ファイルをドラッグアンドドロップします。
 
-- Builds include the `studio-rpc-usb-uart` snippet and `CONFIG_ZMK_STUDIO=y` for the left side only.
-- We’ve added reserved layers (`extra1`, `extra2`) for use within ZMK Studio.
-- An unlock binding `&studio_unlock` is available on the Raise layer, top‑left position (replacing a former `&none`).
+## 🧩 ZMK Studioサポート（フォーク元のままの日本語訳：未検証）
 
-How to use:
+このリポジトリは、左側/中央側でZMK Studio用に設定されています。
 
-1. Build and flash the left firmware produced by GitHub Actions.
-2. Connect over USB and open ZMK Studio (web or native app).
-3. Ensure keyboard output is USB (invoke `&out OUT_USB` if needed).
-4. Press the `&studio_unlock` key once to allow editing.
-5. Make your keymap changes in Studio. Note: Once Studio takes over, changes to `.keymap` aren’t applied unless you run “Restore Stock Settings” in Studio.
+- ビルドには、左側のみに `studio-rpc-usb-uart` スニペットと `CONFIG_ZMK_STUDIO=y` が含まれています。
+- ZMK Studio内で使用するために予約済みレイヤー（`extra1`、`extra2`）を追加しました。
+- Raiseレイヤーの左上の位置（以前の `&none` を置き換え）に、ロック解除用バインディング `&studio_unlock` が利用可能です。
 
-Notes:
+使い方：
 
-- Studio builds use more RAM/flash. If you hit size limits, we can tune features.
-- Only the left (central) side needs Studio enabled for split keyboards.
+1. GitHub Actionsで生成された左側のファームウェアをビルドしてフラッシュします。
+2. USBで接続し、ZMK Studio（Webまたはネイティブアプリ）を開きます。
+3. キーボード出力がUSBであることを確認します（必要に応じて `&out OUT_USB` を呼び出します）。
+4. `&studio_unlock` キーを1回押して編集を許可します。
+5. Studioでキーマップを変更します。注：Studioが制御を引き継ぐと、Studioで「Restore Stock Settings」を実行しない限り、`.keymap` への変更は適用されません。
 
-### Who Is This For?
+注意：
 
-- Beginners to ZMK
-- Users who only want to customize keymaps
-- Anyone who doesn’t need to modify drivers or hardware definitions
+- Studioビルドはより多くのRAM/フラッシュを使用します。サイズ制限に達した場合、機能を調整できます。
+- 分割キーボードの場合、Studioを有効にする必要があるのは左側（中央）のみです。
 
-## How to build Cornix Zmk firmware from scratch
+### 誰向けですか？
 
-This section will guide you through building the Cornix ZMK firmware from scratch using the official ZMK firmware development process.
+- ZMKの初心者
+- キーマップのみをカスタマイズしたいユーザー
+- ドライバーやハードウェア定義を変更する必要がない人
 
-### Prerequisites
+## Cornix ZMKファームウェアをスクラッチからビルドする方法（フォーク元のままの日本語訳）
 
-Before starting, ensure you have the following:
+このセクションでは、公式のZMKファームウェア開発プロセスを使用して、Cornix ZMKファームウェアをスクラッチからビルドする方法を説明します。
 
-- A GitHub account
- Git installed on your system
-- Basic understanding of Git and GitHub
-- Your Cornix keyboard PCBs ready
+### 前提条件
 
-### Step 1: Initialize ZMK Config Repository
+開始する前に、以下を確認してください：
 
-1. **Create a new repository** using the official ZMK config template:
-   - Visit: <https://github.com/zmkfirmware/unified-zmk-config-template>
-   - Click "Use this template" → "Create a new repository"
-   - Name your repository (e.g., `cornix-zmk-config`)
-   - Choose "Public" or "Private" as preferred
-   - Click "Create repository"
+- GitHubアカウント
+- システムにGitがインストールされていること
+- GitとGitHubの基本的な理解
+- CornixキーボードPCBの準備
 
-2. **Clone your new repository locally**:
+### ステップ1：ZMK設定リポジトリの初期化
+
+1. **新しいリポジトリを作成する** 公式のZMK設定テンプレートを使用：
+   - アクセス：<https://github.com/zmkfirmware/unified-zmk-config-template>
+   - "Use this template" → "Create a new repository" をクリック
+   - リポジトリに名前を付ける（例：`cornix-zmk-config`）
+   - "Public" または "Private" を選択
+   - "Create repository" をクリック
+
+2. **新しいリポジトリをローカルにクローンする**：
 
    ```bash
    git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
    cd YOUR_REPO_NAME
    ```
 
-3. **Initialize ZMK development environment**:
+3. **ZMK開発環境を初期化する**：
 
    ```bash
    west init -l config/
@@ -165,22 +139,22 @@ Before starting, ensure you have the following:
    west zephyr-export
    ```
 
-> **Important**: You should thoroughly read the ZMK documentation before proceeding, as ZMK firmware development has a learning curve.
+> **重要**：ZMKファームウェア開発には学習曲線があるため、進める前にZMKドキュメントをよく読んでおく必要があります。
 >
-> - ZMK Customization Guide: <https://zmk.dev/docs/customization>
-> - ZMK Configuration: <https://zmk.dev/docs/user-setup>
+> - ZMKカスタマイズガイド：<https://zmk.dev/docs/customization>
+> - ZMK設定：<https://zmk.dev/docs/user-setup>
 
-### Step 2: Add Cornix Shield to Your Project
+### ステップ2：プロジェクトへのCornixシールドの追加
 
-After initializing your zmk-config repository, follow the steps in the next section to integrate the Cornix shield.
+zmk-configリポジトリを初期化した後、次のセクションの手順に従ってCornixシールドを統合します。
 
-## How to Add Cornix Shield to Existing ZMK Project
+## 既存のZMKプロジェクトにCornixシールドを追加する方法（フォーク元のままの日本語訳）
 
-For users with existing zmk-config, add this repository dependency via west.yml and pull the latest version via west update:
+既存のzmk-configを持つユーザーの場合、west.yml経由でこのリポジトリの依存関係を追加し、west updateで最新バージョンを取得します：
 
-### 1. Modify west.yml
+### 1. west.ymlの修正
 
-Edit the `config/west.yml` file, add to the `manifest/remotes` section:
+`config/west.yml` ファイルを編集し、`manifest/remotes` セクションに追加します：
 
 ```yaml
 remotes:
@@ -192,7 +166,7 @@ remotes:
     url-base: https://github.com/urob
 ```
 
-Add to the `manifest/projects` section:
+`manifest/projects` セクションに追加します：
 
 ```yaml
 projects:
@@ -208,25 +182,25 @@ projects:
     revision: main
 ```
 
-### 2. Update Dependencies
+### 2. 依存関係の更新
 
 ```bash
 west update
 ```
 
-### 3. Configure Build
+### 3. ビルド設定
 
-Edit the `build.yaml` file, add:
+`build.yaml` ファイルを編集し、以下を追加します：
 
 > [!NOTE]
 >
-> 1. If you are using (default) cornix without dongle, choose "cornix_left", "cornix_right" and "reset".
-> 2. If you are using cornix with dongle, choose "cornix_dongle". "cornix_left_for_dongle", "cornix_right" and "reset".
-> 3. Add "cornix_indicator" shield to enable RGB led light. It consumes much more power, use at your own risk.
+> 1. ドングルなしで（デフォルトの）Cornixを使用する場合、"cornix_left"、"cornix_right"、"reset" を選択してください。
+> 2. ドングル付きでCornixを使用する場合、"cornix_dongle"、"cornix_left_for_dongle"、"cornix_right"、"reset" を選択してください。(このリポジトリではドングルのビルドは消してありますので、生成しません)
+> 3. RGB LEDライトを有効にするには "cornix_indicator" シールドを追加してください。消費電力が大幅に増えるため、自己責任で使用してください。
 
 ```yaml
 include:
-  # Use cornix with dongle
+  # ドングル付きでCornixを使用
   - board: cornix_dongle
     shield: cornix_dongle_eyelash dongle_display
     snippet: studio-rpc-usb-uart
@@ -236,7 +210,7 @@ include:
     # shield: cornix_indicator
     artifact-name: cornix_left_for_dongle
 
-  # Use cornix without dongle
+  # ドングルなしでCornixを使用
   - board: cornix_left
     # shield: cornix_indicator
     artifact-name: cornix_left
@@ -250,49 +224,49 @@ include:
     artifact-name: reset
 ```
 
-### 4. Build Firmware
+### 4. ファームウェアのビルド
 
-Use your preferred method to build
+好みの方法でビルドしてください。
 
-- no need to recovery the sd since 2.3
-- falsh reset.uf2 both side of cornix
-- flash left and right uf2 files
-- reset both side at the same time.
+- v2.3以降、SDの復旧は不要です
+- Cornixの両側にreset.uf2をフラッシュします
+- 左と右のuf2ファイルをフラッシュします
+- 両側を同時にリセットします
 
-### 5. Flash Firmware
+### 5. ファームウェアのフラッシュ
 
-Flash the generated `.uf2` files to the corresponding microcontroller:
+生成された `.uf2` ファイルを対応するマイクロコントローラーにフラッシュします：
 
-- Left half: `build/left/zephyr/zmk.uf2`
-- Right half: `build/right/zephyr/zmk.uf2`
+- 左半分：`build/left/zephyr/zmk.uf2`
+- 右半分：`build/right/zephyr/zmk.uf2`
 
-## Dongle Adapter Shield for Custom Dongle Users
+## カスタムドングルユーザー向けドングルアダプターシールド（フォーク元のままの日本語訳）
 
-For users who want to create their own custom dongle configurations, this repository provides a adapter shield. The complete configuration for the Cornix dongle can use multiple shields:
+独自のカスタムドングル設定を作成したいユーザーのために、このリポジトリはアダプターシールドを提供します。Cornixドングルの完全な設定では、複数のシールドを使用できます：
 
-1. **`cornix_dongle_adapter`** - This is the common shield for the matrix and Bluetooth functionality
-2. **`dongle_display`** - This is the display module for the dongle screen (or another display project)
-3. **`cornix_dongle_eyelash`** - This is an example shield for setting up display device for the board (if the board already has `zephyr,display` in the device tree, this display overlay shield is not needed)
+1. **`cornix_dongle_adapter`** - マトリックスとBluetooth機能のための共通シールド
+2. **`dongle_display`** - ドングル画面（または別のディスプレイプロジェクト）用のディスプレイモジュール
+3. **`cornix_dongle_eyelash`** - ボード用のディスプレイデバイスを設定するためのサンプルシールド（ボードがデバイスツリーに既に `zephyr,display` を持っている場合、このディスプレイオーバーレイシールドは不要です）
 
-The configuration in the `build.yaml` file shows how to use these shields for the eyelash dongle:
+`build.yaml` ファイルの設定は、eyelashドングル用のシールドの使用方法を示しています：
 
 ```yaml
 include:
-  # Use cornix with dongle
+  # Cornixをドングル付きで使用
   - board: nice_nano_v2
     shield: cornix_dongle_adapter cornix_dongle_eyelash dongle_display
     snippet: studio-rpc-usb-uart
     artifact-name: cornix_dongle
 ```
 
-To create a custom shield for the display part:
+ディスプレイ部分のカスタムシールドを作成するには：
 
-1. The `dongle_display` module is a module contains display widgets, included as part of the project dependencies via west or locally
-2. If you need to create a custom shield for your display hardware, you can create a new shield that provides the appropriate display configuration. Here shows `cornix_dongle_eyelash` as an example
-3. If your board already has `zephyr,display` in the device tree, you can omit the `cornix_dongle_eyelash` shield
-4. Include your custom shield in the build configuration
+1. `dongle_display` モジュールはディスプレイウィジェットを含むモジュールであり、west経由またはローカルでプロジェクト依存関係の一部として含まれます。
+2. ディスプレイハードウェア用のカスタムシールドを作成する必要がある場合は、適切なディスプレイ設定を提供する新しいシールドを作成できます。ここでは例として `cornix_dongle_eyelash` を示しています。
+3. ボードがデバイスツリーに既に `zephyr,display` を持っている場合は、`cornix_dongle_eyelash` シールドを省略できます。
+4. ビルド設定にカスタムシールドを含めます。
 
-For custom dongle screens, add a new target in build.yaml for your custom dongle:
+カスタムドングル画面の場合、カスタムドングル用の新しいターゲットをbuild.yamlに追加します：
 
 ```yaml
 - board: nice_nano_v2
@@ -301,14 +275,14 @@ For custom dongle screens, add a new target in build.yaml for your custom dongle
   artifact-name: cornix_dongle
 ```
 
-To create a custom shield for your display:
+ディスプレイ用のカスタムシールドを作成するには：
 
-1. Use `cornix_dongle_adapter` as the base shield for the matrix and Bluetooth functionality
-2. Add your custom shield in the `build.yaml` file with the appropriate board and configuration
-3. Use `cornix_dongle_eyelash` as an example and modify the display parts to match your custom board
-4. You can copy the `cornix_dongle_eyelash` into your project's `boards/shield/` directory, and use the same name or rename it as a new shield
+1. マトリックスとBluetooth機能のベースシールドとして `cornix_dongle_adapter` を使用します。
+2. 適切なボードと設定を含むカスタムシールドを `build.yaml` ファイルに追加します。
+3. `cornix_dongle_eyelash` を例として使用し、カスタムボードに合わせてディスプレイ部分を変更します。
+4. `cornix_dongle_eyelash` をプロジェクトの `boards/shield/` ディレクトリにコピーし、同じ名前を使用するか、新しいシールドとして名前を変更できます。
 
-The configuration in the `west.yml` file remains the same:
+`west.yml` ファイルの設定は同じままです：
 
 ```yaml
 remotes:
@@ -334,39 +308,39 @@ projects:
     revision: main
 ```
 
-## Build This Project Locally (Without west.yaml Dependency)
+## このプロジェクトをローカルでビルドする (west.yaml依存なし)（フォーク元のままの日本語訳）
 
-If you prefer to build this project locally without adding it as a dependency in your west.yaml, you can use the ZMK_EXTRA_MODULES cmake argument.
+west.yamlの依存関係として追加せずにこのプロジェクトをローカルでビルドしたい場合は、ZMK_EXTRA_MODULES cmake引数を使用できます。
 
-### Prerequisites 2
+### 前提条件 2
 
-1. Have a working ZMK development environment set up
-2. Clone this repository to a local directory
+1. 動作するZMK開発環境がセットアップされていること
+2. このリポジトリをローカルディレクトリにクローンする
 
-### Build Steps
+### ビルド手順
 
-1. **Clone this repository**:
+1. **このリポジトリをクローンする**：
 
    ```bash
    git clone https://github.com/hitsmaxft/zmk-keyboard-cornix.git
    ```
 
-2. **Configure your ZMK build with the extra module**:
+2. **追加モジュールを使用してZMKビルドを設定する**：
 
-   Edit your `.west/config` file and add the cmake argument under the `[build]` section:
+   `.west/config` ファイルを編集し、`[build]` セクションの下にcmake引数を追加します：
 
    ```ini
    [build]
    cmake-args = -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DZMK_EXTRA_MODULES=/full/absolute/path/to/zmk-keyboard-cornix
    ```
 
-   Replace `/full/absolute/path/to/zmk-keyboard-cornix` with the actual absolute path where you cloned this repository.
+   `/full/absolute/path/to/zmk-keyboard-cornix` を、このリポジトリをクローンした実際の絶対パスに置き換えてください。
 
-3. **Build the firmware**:
+3. **ファームウェアをビルドする**：
 
    ```bash
    west build -b cornix_main_left
    west build -b cornix_right
    ```
 
-This method allows you to use the Cornix shield without modifying your existing ZMK configuration's west.yaml file.
+この方法を使用すると、既存のZMK設定のwest.yamlファイルを変更せずにCornixシールドを使用できます。
